@@ -45,8 +45,23 @@ class ContactController extends Controller
     public function admin(Request $request)
 {
     $contacts = Contact::with('category')
-        ->KeywordSearch($request->search, $request->match_type ?? 'partial')
+     ->when($request->filled('search'), function ($query) use ($request) {
+        return $query->KeywordSearch($request->search, $request->match_type ?? 'partial');
+        })
+
+        ->when($request->filled('gender'), function ($query) use ($request) {
+        return $query->where('gender', $request->gender);
+        })
+
+        ->when($request->filled('category_id'), function ($query) use ($request) {
+        return $query->where('category_id', $request->category_id);
+        })
+        
+        ->when($request->filled('from_date'), function ($query) use ($request) {
+        return $query->whereDate('created_at', '>=', $request->from_date);
+
         ->simplePaginate(7);
+        ->withQueryString();
 
     $categories = Category::all();
 
