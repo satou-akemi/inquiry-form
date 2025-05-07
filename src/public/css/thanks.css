@@ -1,0 +1,19 @@
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.thanks__text p {
+    font-size: ;
+}
+
+.thanks__button a {
+    display: inline-block;
+    padding: 10px 30px;
+    background: #82756A;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+}
