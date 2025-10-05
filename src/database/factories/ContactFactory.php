@@ -21,7 +21,7 @@ class ContactFactory extends Factory
             'last_name' =>$this->faker->lastName,
             'gender' => $this->faker->randomElement(['男性','女性']),
             'email'=> $this->faker->unique()->safeEmail(),
-             'tel1' => '090',
+            'tel1' => '090',
             'tel2' => $this->faker->numberBetween(1000, 9999),
             'tel3' => $this->faker->numberBetween(1000, 9999),
             'address'=>$this->faker->address,
